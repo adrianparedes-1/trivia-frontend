@@ -1,20 +1,26 @@
-import { useEffect } from "react";
-
-export default function LoginPage({ onSuccess }) {
-  const login = () => {
-    window.location.href = "/api/spotify/login";
-  };
-
-  useEffect(() => {
-    fetch("/api/me").then(r => {
-      if (r.ok) onSuccess();
-    });
-  }, []);
-
+export default function LoginPage() {
   return (
-    <div>
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+      fontFamily: "sans-serif",
+    }}>
       <h1>Music Trivia</h1>
-      <button onClick={login}>Login with Spotify</button>
+      <p>Click below to login with Spotify</p>
+
+      <a href="http://localhost:8000/auth">
+        <button style={{
+          padding: "10px 20px",
+          fontSize: "16px",
+          cursor: "pointer",
+          borderRadius: "5px",
+        }}>
+          Login with Spotify
+        </button>
+      </a>
     </div>
   );
 }

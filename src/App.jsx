@@ -6,6 +6,7 @@ import GameRoom from "./GameRoom";
 export default function App() {
   const [stage, setStage] = useState("login");
 
+  if (stage === "login") return <LoginPage />;
   return (
     <>
       {stage === "login" && <LoginPage onSuccess={() => setStage("menu")} />}
