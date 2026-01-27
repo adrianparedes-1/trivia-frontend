@@ -1,4 +1,10 @@
-export default function LoginPage() {
+export default function LoginPage({ onSuccess }) {
+  const handleLogin = () => {
+    // Store callback in sessionStorage before redirecting
+    sessionStorage.setItem("loginCallback", "true");
+    window.location.href = "http://localhost:8000/auth";
+  };
+
   return (
     <div style={{
       display: "flex",
@@ -11,16 +17,16 @@ export default function LoginPage() {
       <h1>Music Trivia</h1>
       <p>Click below to login with Spotify</p>
 
-      <a href="http://localhost:8000/auth">
-        <button style={{
+      <button 
+        onClick={handleLogin}
+        style={{
           padding: "10px 20px",
           fontSize: "16px",
           cursor: "pointer",
           borderRadius: "5px",
         }}>
-          Login with Spotify
-        </button>
-      </a>
+        Login with Spotify
+      </button>
     </div>
   );
 }
